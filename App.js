@@ -1,11 +1,29 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { colors } from './theme/colors';
+import { spacing } from './theme/spacing';
+import { useFonts } from 'expo-font';
+import { typography } from './theme/typography';
+import Text from './components/text/text';
 
 export default function App() {
+  const [loaded] = useFonts({
+    Montserrat: require('./fonts/Antonio-VariableFont_wght.ttf'),
+    LeagueSpartan: require('./fonts/LeagueSpartan-VariableFont_wght.ttf'),
+    RobotoMedium: require('./fonts/Roboto-Regular.ttf'),
+
+  });
+
+  if (!loaded) {
+    return null;
+  }
+
+
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+      <Text preset="h1" style={{ color: 'green' }}>Learn React Native</Text>
+      <Text preset='h4'>Hello World</Text>
+      <StatusBar style='light' />
     </View>
   );
 }
@@ -13,7 +31,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: colors.DarkBlue,
     alignItems: 'center',
     justifyContent: 'center',
   },
