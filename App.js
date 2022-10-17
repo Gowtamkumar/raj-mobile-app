@@ -5,6 +5,14 @@ import { spacing } from './theme/spacing';
 import { useFonts } from 'expo-font';
 import { typography } from './theme/typography';
 import Text from './components/text/text';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import HomeScreen from './screens/HomeScreen';
+import About from './screens/About';
+
+
+const Stack = createNativeStackNavigator();
+
 
 export default function App() {
   const [loaded] = useFonts({
@@ -20,11 +28,13 @@ export default function App() {
 
 
   return (
-    <View style={styles.container}>
-      <Text preset="h1" style={{ color: 'green' }}>Learn React Native</Text>
-      <Text preset='h4'>Hello World</Text>
-      <StatusBar style='light' />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="About" component={About} />
+      </Stack.Navigator>
+    </NavigationContainer>
+
   );
 }
 
