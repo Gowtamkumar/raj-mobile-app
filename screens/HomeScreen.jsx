@@ -13,7 +13,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 export default function HomeScreen({ navigation }) {
   const handleChange = () => {};
   return (
-    <SafeAreaView style={{ flex: 1, margin: 10 }}>
+    <SafeAreaView style={{ flex: 1, marginHorizontal: 10 }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <View style={[styles.container]}>
           <Pressable
@@ -154,8 +154,7 @@ export default function HomeScreen({ navigation }) {
           </Pressable>
         </View>
 
-        <View>
-          <Text>HomeScreen Hello</Text>
+        {/* <View>
           <Button
             title="Go to Details"
             onPress={() => navigation.navigate("About")}
@@ -168,7 +167,7 @@ export default function HomeScreen({ navigation }) {
             title="ProductDetail page"
             onPress={() => navigation.navigate("ProductDetail")}
           />
-        </View>
+        </View> */}
       </ScrollView>
     </SafeAreaView>
   );

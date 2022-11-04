@@ -7,7 +7,7 @@ export default function DetailsProfile({navigation}) {
       <Text>This is the Details Profile</Text>
       <Button
         title="Go to Details Profile"
-        onPress={() => navigation.navigate("Home")}
+        onPress={() => navigation.navigate("HomeScreen")}
       />
     </View>
   )

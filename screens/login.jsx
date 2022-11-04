@@ -50,11 +50,7 @@ export default function Login({ navigation }) {
           onChangeText={(text) => setPassword(text)}
           secureTextEntry={true}
         />
-
-        
-
         {error && <Text style={{ color: "red", marginTop: 10 }}>{error}</Text>}
-
         {loading ? (
           <ActivityIndicator />
         ) : (
@@ -74,7 +70,11 @@ export default function Login({ navigation }) {
       <TouchableOpacity onPress={navigateToSignUp} style={{ marginTop: 25 }}>
         <Text style={{ textAlign: "center" }}>
           Don't have an account?{" "}
-          <Text style={{ color: "#18B18D", fontWeight: "bold" }}>Sign up</Text>
+            
+          <Text style={{ color: "#18B18D", fontWeight: "bold" }} 
+          onPress={() => navigation.navigate("Signup")}
+          >Sign up</Text>
+
         </Text>
       </TouchableOpacity>
     </SafeAreaView>
