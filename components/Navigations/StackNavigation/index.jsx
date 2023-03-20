@@ -13,7 +13,10 @@ export default function StackNavigation() {
     <Stack.Navigator
       screenOptions={{
         headerShown: false,
+        // headerTitleAlign: "center"
       }}
+
+
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="ProductDetail" component={ProductDetail} />
