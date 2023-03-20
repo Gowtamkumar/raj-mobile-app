@@ -15,7 +15,7 @@ import Carousel from "react-native-reanimated-carousel";
 export default function HomeScreen({ navigation }) {
   const width = Dimensions.get("window").width;
 
-  const handleChange = () => { };
+  const handleChange = () => {};
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
