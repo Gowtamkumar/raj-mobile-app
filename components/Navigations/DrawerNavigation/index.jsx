@@ -1,13 +1,19 @@
-import React from "react";
+import React, { Suspense, lazy, useEffect, useState } from "react";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import Login from "../../../screens/login";
-import Signup from "../../../screens/signup";
 import TabNavigation from "../TabNavigation";
 import Contact from "../../../screens/Contact";
 import Orders from "../../../screens/Orders";
 import { Ionicons } from "@expo/vector-icons";
+import Profile from "../../../screens/Profile";
+const Signup = lazy(() => import('../../../screens/signup'));
 
 export default function DrawerNavigation() {
+  const [auth, setAuth] = useState(false)
+  useEffect(() => {
+    console.log(auth);
+  }, [])
+
   const Drawer = createDrawerNavigator();
   return (
 
@@ -25,8 +31,10 @@ export default function DrawerNavigation() {
             iconName = focused ? "cart" : "cart";
           } else if (route.name === "Contact") {
             iconName = focused ? "cart" : "cart";
+          } else if (route.name === "Orders") {
+            iconName = focused ? "cart" : "cart";
           }
-          else if (route.name === "Orders") {
+          else if (route.name === "Profile") {
             iconName = focused ? "cart" : "cart";
           }
 
@@ -36,16 +44,20 @@ export default function DrawerNavigation() {
         // drawerContentStyle: ,
         // tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
-        headerTitleAlign: 'center'
+        headerTitleAlign: "center",
+
       })}
-
-
     >
       <Drawer.Screen name="HomeTab" component={TabNavigation} />
       <Drawer.Screen name="Login" component={Login} />
       <Drawer.Screen name="Signup" component={Signup} />
       <Drawer.Screen name="Contact" component={Contact} />
       <Drawer.Screen name="Orders" component={Orders} />
+      {
+        auth &&
+        <Drawer.Screen name="Profile" component={Profile} />
+      }
+
     </Drawer.Navigator>
 
   );

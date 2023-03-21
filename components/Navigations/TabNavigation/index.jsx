@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import Cart from "../../../screens/Cart";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -7,7 +7,11 @@ import StackNavigation from "../StackNavigation";
 import { Ionicons } from "@expo/vector-icons";
 
 export default function TabNavigation() {
+  const [auth, setAuth] = useState(true)
   const Tab = createBottomTabNavigator();
+  useEffect(() => {
+    console.log(auth);
+  }, [])
 
   return (
     <Tab.Navigator
@@ -31,6 +35,7 @@ export default function TabNavigation() {
     >
       <Tab.Screen name="Home" component={StackNavigation} />
       <Tab.Screen name="Cart" component={Cart} />
+     
     </Tab.Navigator>
   );
 }

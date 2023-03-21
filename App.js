@@ -3,6 +3,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import "react-native-gesture-handler";
 import DrawerNavigation from "./components/Navigations/DrawerNavigation";
 import { NavigationContainer } from "@react-navigation/native";
+import { Suspense } from "react";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -16,11 +17,13 @@ export default function App() {
   }
 
   return (
-    <SafeAreaProvider>
-      <NavigationContainer>
-        <DrawerNavigation />
-      </NavigationContainer>
-    </SafeAreaProvider>
+    <Suspense fallback={"Loadding"}>
+      <SafeAreaProvider>
+        <NavigationContainer>
+          <DrawerNavigation />
+        </NavigationContainer>
+      </SafeAreaProvider>
+    </Suspense>
   );
 }
 

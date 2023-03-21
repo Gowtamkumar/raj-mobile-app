@@ -1,7 +1,7 @@
 import { View, Text, Button } from 'react-native'
 import React from 'react'
 
-export default function DetailsProfile({navigation}) {
+export default function Profile({ navigation }) {
   return (
     <View>
       <Text>This is the Details Profile</Text>
