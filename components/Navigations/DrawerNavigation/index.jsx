@@ -6,9 +6,10 @@ import Contact from "../../../screens/Contact";
 import Orders from "../../../screens/Orders";
 import { Ionicons } from "@expo/vector-icons";
 import Profile from "../../../screens/Profile";
+import { View } from "react-native";
 const Signup = lazy(() => import('../../../screens/signup'));
 
-export default function DrawerNavigation() {
+export default function DrawerNavigation({ navigation }) {
   const [auth, setAuth] = useState(false)
   useEffect(() => {
     console.log(auth);
@@ -18,6 +19,7 @@ export default function DrawerNavigation() {
   return (
 
     <Drawer.Navigator
+
       screenOptions={({ route }) => ({
         headerShown: true,
         drawerIcon: ({ focused, color, size }) => {

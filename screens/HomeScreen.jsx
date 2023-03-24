@@ -11,19 +11,21 @@ import {
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Carousel from "react-native-reanimated-carousel";
+import { service } from "../MockData/services";
 
 export default function HomeScreen({ navigation }) {
-  const width = Dimensions.get("window").width;
+  let deviecWidth = Dimensions.get("window").width;
+  let deviecHeight = Dimensions.get("window").height;
 
   const handleChange = () => { };
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
-        <View style={{ flex: 1 }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "green" }}>
+      <ScrollView>
+        <View style={{ flex: 1, backgroundColor: "red" }}>
           <Carousel
             loop
-            width={width}
-            height={width / 2}
+            width={deviecWidth}
+            height={deviecHeight / 4}
             autoPlay={true}
             data={[...new Array(6).keys()]}
             scrollAnimationDuration={1000}
@@ -49,144 +51,54 @@ export default function HomeScreen({ navigation }) {
             )}
           />
         </View>
-
         <View
           style={{
-            flexDirection: "column",
-            flex: 1,
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            gap: 5,
+            margin: 3
           }}
         >
-          <View
-            style={{
-              flex: 2,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              padding: 10,
-            }}
-          >
-            <View style={{ backgroundColor: "red", flex: 2, padding: 10 }}>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                recusandae nobis laborum, sint vero amet laboriosam accusantium
-                atque soluta necessitatibus ea, ullam omnis! Deleniti nihil
-                dolorum ea doloribus vero ducimus.
-              </Text>
-              <Button
-                onPress={() => navigation.navigate("ProductDetail")}
-                title="Learn More"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-              />
-            </View>
-            <View style={{ flex: 0.1 }} />
-            <View style={{ backgroundColor: "red", flex: 2, padding: 10 }}>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                recusandae nobis laborum, sint vero amet laboriosam accusantium
-                atque soluta necessitatibus ea, ullam omnis! Deleniti nihil
-                dolorum ea doloribus vero ducimus.
-              </Text>
-              <Button
-                onPress={() => navigation.navigate("ProductDetail")}
-                title="Learn More"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-              />
-            </View>
-          </View>
-          <View
-            style={{
-              flex: 2,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              padding: 10,
-            }}
-          >
-            <View style={{ backgroundColor: "red", flex: 2, padding: 10 }}>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                recusandae nobis laborum, sint vero amet laboriosam accusantium
-                atque soluta necessitatibus ea, ullam omnis! Deleniti nihil
-                dolorum ea doloribus vero ducimus.
-              </Text>
-              <Button
-                onPress={() => navigation.navigate("ProductDetail")}
-                title="Learn More"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-              />
-            </View>
-            <View style={{ flex: 0.1 }} />
-            <View style={{ backgroundColor: "red", flex: 2, padding: 10 }}>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                recusandae nobis laborum, sint vero amet laboriosam accusantium
-                atque soluta necessitatibus ea, ullam omnis! Deleniti nihil
-                dolorum ea doloribus vero ducimus.
-              </Text>
-              <Button
-                onPress={() => navigation.navigate("ProductDetail")}
-                title="Learn More"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-              />
-            </View>
-          </View>
+          {service.map((item, idx) => {
+            return (
+              <View
+                style={{
+                  width: deviecWidth / 2 - 6,
+                  height: 'auto',
+                  backgroundColor: "yellow",
+                  paddingHorizontal: 2,
+                  paddingVertical: 15,
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+                key={idx}
+              >
+                <Image
+                  source={{
+                    uri: item.img_url,
+                    width: 100,
+                    height: 100,
+                  }}
+                />
 
-          <View
-            style={{
-              flex: 2,
-              flexDirection: "row",
-              justifyContent: "space-between",
-              padding: 10,
-            }}
-          >
-            <View style={{ backgroundColor: "red", flex: 2, padding: 10 }}>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                recusandae nobis laborum, sint vero amet laboriosam accusantium
-                atque soluta necessitatibus ea, ullam omnis! Deleniti nihil
-                dolorum ea doloribus vero ducimus.
-              </Text>
-              <Button
-                onPress={() => navigation.navigate("ProductDetail")}
-                title="Learn More"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-              />
-            </View>
-            <View style={{ flex: 0.1 }} />
-            <View style={{ backgroundColor: "red", flex: 2, padding: 10 }}>
-              <Text>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore
-                recusandae nobis laborum, sint vero amet laboriosam accusantium
-                atque soluta necessitatibus ea, ullam omnis! Deleniti nihil
-                dolorum ea doloribus vero ducimus.
-              </Text>
-              <Button
-                onPress={() => navigation.navigate("ProductDetail")}
-                title="Learn More"
-                color="#841584"
-                accessibilityLabel="Learn more about this purple button"
-              />
-            </View>
-          </View>
+                <Text>{item.name}</Text>
+                <Text style={{ textAlign: "center" }}>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                  Labore recusandae nobis laborum, sint vero amet laboriosam
+                  accusantium atque soluta necessitatibus ea, ullam omnis!
+                  Deleniti nihil dolorum ea doloribus vero ducimus.
+                </Text>
+                <Button
+                  onPress={() => navigation.navigate("ProductDetail")}
+                  title="Learn More"
+                  color="#841584"
+                  accessibilityLabel="Learn more about this purple button"
+                />
+              </View>
+            );
+          })}
         </View>
-
-        {/* <View>
-          <Button
-            title="Go to Details"
-            onPress={() => navigation.navigate("About")}
-          />
-          <Button
-            title="Go to Details Profile"
-            onPress={() => navigation.navigate("DetailsProfile")}
-          />
-          <Button
-            title="ProductDetail page"
-            onPress={() => navigation.navigate("ProductDetail")}
-          />
-        </View> */}
       </ScrollView>
     </SafeAreaView>
   );

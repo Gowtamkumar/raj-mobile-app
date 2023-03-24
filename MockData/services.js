@@ -2,7 +2,8 @@ export const service = [
   {
     id: 1,
     name: "Free Fire(UID)",
-    img: "https://images.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg?auto=compress&cs=tinysrgb&w=600",
+    img_url:
+      "https://images.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg?auto=compress&cs=tinysrgb&w=600",
     items: [
       { id: "uid1", name: "115", price: 80, icon: "" },
       { id: "uid2", name: "115", price: 100, icon: "" },
@@ -14,7 +15,8 @@ export const service = [
   {
     id: 2,
     name: "Uid Membersh",
-    img: "",
+    img_url:
+      "https://images.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg?auto=compress&cs=tinysrgb&w=600",
     items: [
       { id: "Uid1", name: "115", price: 80, icon: "" },
       { id: "Uid2", name: "115", price: 100, icon: "" },
@@ -26,7 +28,8 @@ export const service = [
   {
     id: 3,
     name: "Level Up pass",
-    img: "",
+    img_url:
+      "https://images.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg?auto=compress&cs=tinysrgb&w=600",
     items: [
       { id: "levelUp1", name: "115", price: 80, icon: "" },
       { id: "levelUp2", name: "115", price: 100, icon: "" },
@@ -38,7 +41,8 @@ export const service = [
   {
     id: 4,
     name: "Garena MY SHells",
-    img: "",
+    img_url:
+      "https://images.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg?auto=compress&cs=tinysrgb&w=600",
     items: [
       { id: "garena1", name: "115", price: 80, icon: "" },
       { id: "garena2", name: "115", price: 100, icon: "" },
@@ -50,7 +54,8 @@ export const service = [
   {
     id: 5,
     name: "IN Game Top Up",
-    img: "",
+    img_url:
+      "https://images.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg?auto=compress&cs=tinysrgb&w=600",
     items: [
       { id: "ingame1", name: "115", price: 80, icon: "" },
       { id: "ingame2", name: "115", price: 100, icon: "" },
@@ -62,7 +67,8 @@ export const service = [
   {
     id: 6,
     name: "Plus Point",
-    img: "",
+    img_url:
+      "https://images.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg?auto=compress&cs=tinysrgb&w=600",
     items: [
       { id: "plus1", name: "115", price: 80, icon: "" },
       { id: "plus2", name: "115", price: 100, icon: "" },
@@ -74,7 +80,8 @@ export const service = [
   {
     id: 7,
     name: "Big Offer",
-    img: "",
+    img_url:
+      "https://images.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg?auto=compress&cs=tinysrgb&w=600",
     items: [
       { id: "mship1", name: "115", price: 80, icon: "" },
       { id: "mship2", name: "115", price: 100, icon: "" },
@@ -86,7 +93,8 @@ export const service = [
   {
     id: 7,
     name: "Big Offer",
-    img: "",
+    img_url:
+      "https://images.pexels.com/photos/78783/submachine-gun-rifle-automatic-weapon-weapon-78783.jpeg?auto=compress&cs=tinysrgb&w=600",
     items: [
       { id: "bigoff1", name: "115", price: 80, icon: "" },
       { id: "bigoff2", name: "115", price: 100, icon: "" },

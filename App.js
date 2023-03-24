@@ -19,7 +19,7 @@ export default function App() {
   return (
     <Suspense fallback={"Loadding"}>
       <SafeAreaProvider>
-        <NavigationContainer>
+        <NavigationContainer >
           <DrawerNavigation />
         </NavigationContainer>
       </SafeAreaProvider>

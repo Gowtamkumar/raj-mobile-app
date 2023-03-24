@@ -15,7 +15,6 @@ export default function StackNavigation() {
         // headerTitleAlign: "center"
       }}
 
-
     >
       <Stack.Screen name="HomeScreen" component={HomeScreen} />
       <Stack.Screen name="ProductDetail" component={ProductDetail} />
