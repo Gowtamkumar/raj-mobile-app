@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -9,22 +9,41 @@ import {
   ActivityIndicator,
   Pressable,
   Button,
+  TouchableHighlight,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Input from "../components/input";
+import {
+  Ionicons,
+  AntDesign,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
+import { colors } from "../theme/colors";
+import { spacing } from "../theme/spacing";
 
 export default function Login({ navigation }) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState(null);
+  const [passwordVisibility, setPasswordVisibility] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [login, setlogin] = useState("");
+  const [error, setError] = useState(null);
+  const [rightIcon, setRightIcon] = useState("eye-off");
+
+  const handleSubmit = () => {
+    console.log(login);
+  };
+
+  const handlePasswordVisibility = () => {
+    if (rightIcon === "eye") {
+      setRightIcon("eye-off");
+      setPasswordVisibility(!passwordVisibility);
+    } else if (rightIcon === "eye-off") {
+      setRightIcon("eye");
+      setPasswordVisibility(!passwordVisibility);
+    }
+  };
 
   const navigateToSignUp = () => {
     navigation.navigate("Signup");
-  };
-
-  const login = () => {
-    console.log("logdin", email, password);
   };
 
   return (
@@ -32,7 +51,7 @@ export default function Login({ navigation }) {
       <View>
         <Image
           source={require("../assets/login-image.png")}
-          style={{ alignSelf: "center" }}
+          style={{ alignSelf: "center", height: 200 }}
         />
         <Text style={{ fontSize: 18, fontWeight: "bold", textAlign: "center" }}>
           Never forget your notes
@@ -40,41 +59,85 @@ export default function Login({ navigation }) {
       </View>
 
       <View style={{ margin: 25 }}>
-        <Input
+        <TextInput
+          style={styles.input}
           placeholder="Email"
-          autoCapitalize={"none"}
-          onChangeText={(text) => setEmail(text)}
+          autoCapitalize="none"
+          onChangeText={(e) => setlogin({ ...login, email: e })}
         />
-        <Input
-          placeholder="Password"
-          onChangeText={(text) => setPassword(text)}
-          secureTextEntry={true}
-        />
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.inputField}
+            name="password"
+            placeholder="Enter password"
+            autoCapitalize="none"
+            autoCorrect={false}
+            textContentType="newPassword"
+            secureTextEntry={passwordVisibility}
+            enablesReturnKeyAutomatically
+            onChangeText={(e) => setlogin({ ...login, password: e })}
+          />
+          <Pressable onPress={handlePasswordVisibility}>
+            <MaterialCommunityIcons
+              name={rightIcon}
+              size={20}
+              color="#232323"
+            />
+          </Pressable>
+        </View>
         {error && <Text style={{ color: "red", marginTop: 10 }}>{error}</Text>}
         {loading ? (
           <ActivityIndicator />
         ) : (
-          <Button
-            title="Login"
-            customStyles={{ marginTop: 25, alignSelf: "center" }}
-            onPress={login}
-          />
-          // <Button
-          //   title="Login"
-          //   // customStyles={{ marginTop: 25, alignSelf: "center" }}
-          //   onPress={login}
-          // />
+          <>
+            <Button
+              title="Login"
+              customStyles={{ marginTop: spacing[2], alignSelf: "center" }}
+              onPress={handleSubmit}
+            />
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+              <View style={{ flex: 1, height: 1, backgroundColor: colors.Grey }} />
+              <View>
+                <Text style={{ width: 50, textAlign: 'center' }}>OR</Text>
+              </View>
+              <View style={{ flex: 1, height: 1, backgroundColor: colors.Grey }} />
+            </View>
+
+
+            <TouchableHighlight onPress={() => { }} style={{ backgroundColor: colors.Blue }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, padding: 7 }}>
+                <MaterialCommunityIcons
+                  name={'google'}
+                  size={20}
+                  color="white"
+                />
+                <Text style={{ color: 'white' }} >Login With Google</Text>
+              </View>
+            </TouchableHighlight>
+            <TouchableHighlight onPress={() => { }} style={{ backgroundColor: colors.Blue, marginTop: spacing[2] }}>
+              <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, padding: 7 }}>
+                <MaterialCommunityIcons
+                  name={'facebook'}
+                  size={20}
+                  color="white"
+                />
+                <Text style={{ color: 'white' }} >Login With Facebook</Text>
+              </View>
+            </TouchableHighlight>
+
+          </>
         )}
       </View>
 
-      <TouchableOpacity onPress={navigateToSignUp} style={{ marginTop: 25 }}>
+      <TouchableOpacity onPress={navigateToSignUp} style={{ marginTop: spacing[2] }}>
         <Text style={{ textAlign: "center" }}>
           Don't have an account?{" "}
-
-          <Text style={{ color: "#18B18D", fontWeight: "bold" }}
+          <Text
+            style={{ color: colors.Blue, fontWeight: "bold" }}
             onPress={() => navigation.navigate("Signup")}
-          >Sign up</Text>
-
+          >
+            Sign up
+          </Text>
         </Text>
       </TouchableOpacity>
     </SafeAreaView>
@@ -88,4 +151,26 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 16,
   },
+  inputContainer: {
+    borderBottomWidth: 1,
+    borderBottomColor: "#ccc",
+    padding: 10,
+    marginBottom: 16,
+
+    // backgroundColor: 'white',
+    // width: "100%",
+    // borderRadius: 8,
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+
+    // borderWidth: 4,
+    borderColor: "#d7d7d7",
+  },
+  googleFacebook: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    gap: 15,
+    backgroundColor: 'yellow'
+  }
 });

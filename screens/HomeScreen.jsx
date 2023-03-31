@@ -13,15 +13,16 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import Carousel from "react-native-reanimated-carousel";
 import { service } from "../MockData/services";
 
+let deviecWidth = Dimensions.get("window").width;
+let deviecHeight = Dimensions.get("window").height;
+
 export default function HomeScreen({ navigation }) {
-  let deviecWidth = Dimensions.get("window").width;
-  let deviecHeight = Dimensions.get("window").height;
 
   const handleChange = () => { };
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "green" }}>
+    <SafeAreaView>
       <ScrollView>
-        <View style={{ flex: 1, backgroundColor: "red" }}>
+        <View>
           <Carousel
             loop
             width={deviecWidth}
@@ -29,7 +30,7 @@ export default function HomeScreen({ navigation }) {
             autoPlay={true}
             data={[...new Array(6).keys()]}
             scrollAnimationDuration={1000}
-            onSnapToItem={(index) => console.log("current index:", index)}
+            // onSnapToItem={(index) => console.log("current index:", index)}
             renderItem={({ index }) => (
               <View
                 style={{
@@ -51,50 +52,21 @@ export default function HomeScreen({ navigation }) {
             )}
           />
         </View>
-        <View
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            flexWrap: "wrap",
-            gap: 5,
-            margin: 3
-          }}
-        >
+        <View style={styles.serviceContainer}>
           {service.map((item, idx) => {
             return (
               <View
-                style={{
-                  width: deviecWidth / 2 - 6,
-                  height: 'auto',
-                  backgroundColor: "yellow",
-                  paddingHorizontal: 2,
-                  paddingVertical: 15,
-                  justifyContent: "center",
-                  alignItems: "center",
-                }}
+                style={styles.service}
                 key={idx}
               >
                 <Image
                   source={{
                     uri: item.img_url,
-                    width: 100,
+                    width: 120,
                     height: 100,
                   }}
                 />
-
                 <Text>{item.name}</Text>
-                <Text style={{ textAlign: "center" }}>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Labore recusandae nobis laborum, sint vero amet laboriosam
-                  accusantium atque soluta necessitatibus ea, ullam omnis!
-                  Deleniti nihil dolorum ea doloribus vero ducimus.
-                </Text>
-                <Button
-                  onPress={() => navigation.navigate("ProductDetail")}
-                  title="Learn More"
-                  color="#841584"
-                  accessibilityLabel="Learn more about this purple button"
-                />
               </View>
             );
           })}
@@ -105,17 +77,24 @@ export default function HomeScreen({ navigation }) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    // display: 'flex',
-    flex: 1,
-    padding: 5,
-    flexDirection: "row",
-    columnGap: "10px",
-    // justifyContent: "space-around",
-    // alignItems: 'stretch',
-  },
   logo: {
     width: 66,
     height: 58,
   },
+  serviceContainer: {
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    gap: 5,
+    margin: 3
+  },
+  service: {
+    width: deviecWidth / 2 - 6,
+    height: 'auto',
+    backgroundColor: "yellow",
+    // paddingHorizontal: 2,
+    paddingVertical: 10,
+    justifyContent: "center",
+    alignItems: "center",
+  }
 });

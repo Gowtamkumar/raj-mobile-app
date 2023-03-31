@@ -4,14 +4,15 @@ import React, { useEffect, useState } from "react";
 import Cart from "../../../screens/Cart";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import StackNavigation from "../StackNavigation";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import Profile from "../../../screens/Profile";
 
 export default function TabNavigation() {
-  const [auth, setAuth] = useState(true)
+  const [auth, setAuth] = useState(true);
   const Tab = createBottomTabNavigator();
   useEffect(() => {
     console.log(auth);
-  }, [])
+  }, []);
 
   return (
     <Tab.Navigator
@@ -24,10 +25,11 @@ export default function TabNavigation() {
             iconName = focused ? "home" : "home";
           } else if (route.name === "Cart") {
             iconName = focused ? "cart" : "cart";
+          } else if (route.name === "Profile") {
+            iconName = focused ? "face-man-profile" : "face-man-profile";
           }
-
           // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
         },
         // tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
@@ -35,7 +37,7 @@ export default function TabNavigation() {
     >
       <Tab.Screen name="Home" component={StackNavigation} />
       <Tab.Screen name="Cart" component={Cart} />
-     
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 }

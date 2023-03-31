@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { View, Text, ActivityIndicator, TextInput, Button } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -9,12 +9,12 @@ import Input from "../components/input";
 const OPTIONS = ["Male", "Female"];
 
 export default function Signup() {
-  const [gender, setGender] = React.useState(null);
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [name, setName] = React.useState("");
-  const [age, setAge] = React.useState("");
-  const [loading, setLoading] = React.useState(false);
+  const [gender, setGender] = useState(null);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [name, setName] = useState("");
+  const [age, setAge] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const signup = async () => {
     setLoading(true);
