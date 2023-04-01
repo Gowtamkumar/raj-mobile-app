@@ -61,6 +61,10 @@ export default function Profile({ navigation }) {
 
   // const renderItem = ({ item }) => <Item title={item.title} />;
 
+  const navigateToSignUp = () => {
+    navigation.navigate("Signup");
+  };
+
   return (
     <SafeAreaView>
       <ScrollView>
@@ -86,21 +90,23 @@ export default function Profile({ navigation }) {
         <View
           style={{
             flexDirection: "row",
-            // gap: spacing[3],
-            justifyContent: "space-between",
+            gap: spacing[4],
+            justifyContent: 'center',
             padding: spacing[3],
           }}
         >
-          <View style={{ backgroundColor: "red", padding: spacing[5] }}>
-            <Text >Gowtam kumar</Text>
+          <View style={{ backgroundColor: colors.Silver, padding: spacing[5] }}>
+            <Text>Balance:৳ 888</Text>
           </View>
-          <View style={{ backgroundColor: "red", padding: spacing[5] }}>
-            <Text>Gowtam kumar</Text>
+          <View style={{ backgroundColor: colors.Grey, padding: spacing[5] }}>
+            <Text>Orders ( 200 )</Text>
           </View>
         </View>
 
         <View style={{ paddingLeft: spacing[3], paddingRight: spacing[3] }}>
-          <TouchableHighlight onPress={() => { }} style={styles.singleItem}>
+          <TouchableHighlight onPress={() => {
+            navigation.navigate("MyWallet");
+          }} style={styles.singleItem}>
             <View style={styles.profileItem}>
               <View style={{ flexDirection: "row", gap: spacing[1] }}>
                 <MaterialCommunityIcons
@@ -118,7 +124,9 @@ export default function Profile({ navigation }) {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => { }} style={styles.singleItem}>
+          <TouchableHighlight onPress={() => {
+            navigation.navigate("MyWallet");
+          }} style={styles.singleItem}>
             <View style={styles.profileItem}>
               <View style={{ flexDirection: "row", gap: spacing[1] }}>
                 <MaterialCommunityIcons
@@ -136,7 +144,7 @@ export default function Profile({ navigation }) {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => { }} style={styles.singleItem}>
+          <TouchableHighlight onPress={() => { navigation.navigate("Orders") }} style={styles.singleItem}>
             <View style={styles.profileItem}>
               <View style={{ flexDirection: "row", gap: spacing[1] }}>
                 <MaterialCommunityIcons
@@ -154,7 +162,7 @@ export default function Profile({ navigation }) {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => { }} style={styles.singleItem}>
+          <TouchableHighlight onPress={() => { navigation.navigate("Transaction") }} style={styles.singleItem}>
             <View style={styles.profileItem}>
               <View style={{ flexDirection: "row", gap: spacing[1] }}>
                 <MaterialCommunityIcons
@@ -172,7 +180,7 @@ export default function Profile({ navigation }) {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => { }} style={styles.singleItem}>
+          <TouchableHighlight onPress={() => { navigation.navigate("About") }} style={styles.singleItem}>
             <View style={styles.profileItem}>
               <View style={{ flexDirection: "row", gap: spacing[1] }}>
                 <MaterialCommunityIcons
@@ -190,7 +198,7 @@ export default function Profile({ navigation }) {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => { }} style={styles.singleItem}>
+          <TouchableHighlight onPress={() => { navigation.navigate("PrivatePolicy") }} style={styles.singleItem}>
             <View style={styles.profileItem}>
               <View style={{ flexDirection: "row", gap: spacing[1] }}>
                 <MaterialCommunityIcons
@@ -208,7 +216,7 @@ export default function Profile({ navigation }) {
             </View>
           </TouchableHighlight>
 
-          <TouchableHighlight onPress={() => { }} style={styles.singleItem}>
+          <TouchableHighlight onPress={() => { navigation.navigate("TermAndCondition") }} style={styles.singleItem}>
             <View style={styles.profileItem}>
               <View style={{ flexDirection: "row", gap: spacing[1] }}>
                 <MaterialCommunityIcons
@@ -225,7 +233,7 @@ export default function Profile({ navigation }) {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => { }} style={styles.singleItem}>
+          <TouchableHighlight onPress={() => { navigation.navigate("Login") }} style={styles.singleItem}>
             <View style={styles.profileItem}>
               <View style={{ flexDirection: "row", gap: spacing[1] }}>
                 <MaterialCommunityIcons
