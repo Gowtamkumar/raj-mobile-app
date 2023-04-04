@@ -7,10 +7,11 @@ import Orders from "../../../screens/Orders";
 import { Ionicons } from "@expo/vector-icons";
 import Profile from "../../../screens/Profile";
 import { View } from "react-native";
-const Signup = lazy(() => import('../../../screens/signup'));
+import DashBoard from "../../../screens/Dashboard";
+const Signup = lazy(() => import('../../../screens/Signup'));
 
 export default function DrawerNavigation({ navigation }) {
-  const [auth, setAuth] = useState(false)
+  const [auth, setAuth] = useState(true)
   useEffect(() => {
     console.log(auth);
   }, [])
@@ -38,6 +39,8 @@ export default function DrawerNavigation({ navigation }) {
           }
           else if (route.name === "Profile") {
             iconName = focused ? "cart" : "cart";
+          }else if (route.name === "DashBoard") {
+            iconName = focused ? "DashBoard" : "DashBoard";
           }
 
           // You can return any component that you like here!
@@ -57,7 +60,7 @@ export default function DrawerNavigation({ navigation }) {
       <Drawer.Screen name="Orders" component={Orders} />
       {
         auth &&
-        <Drawer.Screen name="Profile" component={Profile} />
+        <Drawer.Screen name="DashBoard" component={DashBoard} />
       }
 
     </Drawer.Navigator>

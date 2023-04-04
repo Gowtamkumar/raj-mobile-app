@@ -28,6 +28,9 @@ export default function TabNavigation() {
           } else if (route.name === "Profile") {
             iconName = focused ? "face-man-profile" : "face-man-profile";
           }
+          else if (route.name === "Profile") {
+            iconName = focused ? "face-man-profile" : "face-man-profile";
+          }
           // You can return any component that you like here!
           return <MaterialCommunityIcons name={iconName} size={size} color={color} />;
         },

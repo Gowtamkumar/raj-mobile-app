@@ -2,7 +2,7 @@ import { Button, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 import { spacing } from '../theme/spacing'
 
-const Orders = ({navigation}) => {
+const Orders = ({ navigation }) => {
   return (
     <View>
       <Text>Orders</Text>

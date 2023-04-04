@@ -7,7 +7,8 @@ import MyWallet from "../../../screens/MyWallet";
 import Orders from "../../../screens/Orders";
 import PrivatePolicy from "../../../screens/PrivatePolicy";
 import TermAndCondition from "../../../screens/TermAndCondition";
-;
+import ItemDetail from "../../../screens/ItemDetail";
+
 
 const Stack = createNativeStackNavigator();
 
@@ -27,8 +28,8 @@ export default function StackNavigation() {
       <Stack.Screen name="Orders" component={Orders} />
       <Stack.Screen name="PrivatePolicy" component={PrivatePolicy} />
       <Stack.Screen name="TermAndCondition" component={TermAndCondition} />
+      <Stack.Screen name="ItemDetail" component={ItemDetail} />
 
-      
       <Stack.Screen name="Transaction" component={Orders} />
     </Stack.Navigator>
   );
