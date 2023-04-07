@@ -8,6 +8,9 @@ import Orders from "../../../screens/Orders";
 import PrivatePolicy from "../../../screens/PrivatePolicy";
 import TermAndCondition from "../../../screens/TermAndCondition";
 import ItemDetail from "../../../screens/ItemDetail";
+import OnboardingScreen from "../../../screens/OnBoardingScreen";
+import Login from "../../../screens/login";
+import Signup from "../../../screens/Signup";
 
 
 const Stack = createNativeStackNavigator();
@@ -19,18 +22,12 @@ export default function StackNavigation() {
         headerShown: false,
         // headerTitleAlign: "center"
       }}
-
     >
-      <Stack.Screen name="HomeScreen" component={HomeScreen} />
-      <Stack.Screen name="ProductDetail" component={ProductDetail} />
-      <Stack.Screen name="About" component={About} />
-      <Stack.Screen name="MyWallet" component={MyWallet} />
-      <Stack.Screen name="Orders" component={Orders} />
-      <Stack.Screen name="PrivatePolicy" component={PrivatePolicy} />
-      <Stack.Screen name="TermAndCondition" component={TermAndCondition} />
-      <Stack.Screen name="ItemDetail" component={ItemDetail} />
-
-      <Stack.Screen name="Transaction" component={Orders} />
+      <Stack.Screen name="OnboardingScreen" component={OnboardingScreen} />
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Signup" component={Signup} />
+      
+      
     </Stack.Navigator>
   );
 }

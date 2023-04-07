@@ -4,18 +4,18 @@ import { typography } from "../../theme/typography";
 const BASE = {
   fontFamily: typography.primary,
   fontSize: 16,
-  color: colors.White,
+  color: colors.Blue,
 };
 
 const BASE_BOLD = {
   fontFamily: typography.primaryBold,
   fontSize: 16,
-  color: colors.White,
+  color: colors.Blue,
 };
 
 const BOLD = {
   fontFamily: typography.bold,
-  color: colors.White,
+  color: colors.Blue,
 };
 
 export const presets = {

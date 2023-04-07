@@ -4,6 +4,9 @@ import "react-native-gesture-handler";
 import DrawerNavigation from "./components/Navigations/DrawerNavigation";
 import { NavigationContainer } from "@react-navigation/native";
 import { Suspense } from "react";
+import AuthProvider from "./context/AuthContext";
+import StackNavigation from "./components/Navigations/StackNavigation";
+import AppNav from "./components/Navigations/AppNav";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -16,12 +19,17 @@ export default function App() {
     return null;
   }
 
+
   return (
-    <Suspense fallback={"Loadding"}>
+    <Suspense>
       <SafeAreaProvider>
-        <NavigationContainer >
-          <DrawerNavigation />
-        </NavigationContainer>
+        <AuthProvider>
+          {/* <NavigationContainer> */}
+            {/* <DrawerNavigation /> */}
+            <AppNav/>
+            {/* <StackNavigation /> */}
+          {/* </NavigationContainer> */}
+        </AuthProvider>
       </SafeAreaProvider>
     </Suspense>
   );

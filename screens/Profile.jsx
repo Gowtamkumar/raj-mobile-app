@@ -10,7 +10,7 @@ import {
   StatusBar,
   TouchableHighlight,
 } from "react-native";
-import React from "react";
+import React, { useContext } from "react";
 import { spacing } from "../theme/spacing";
 import { colors } from "../theme/colors";
 import {
@@ -20,8 +20,10 @@ import {
 } from "@expo/vector-icons";
 import Text from "../components/text/text";
 import { presets } from "../components/text/text.preset";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Profile({ navigation }) {
+  const { loading, logout, authToken } = useContext(AuthContext)
   // const DATA = [
   //   {
   //     id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
@@ -233,7 +235,7 @@ export default function Profile({ navigation }) {
               />
             </View>
           </TouchableHighlight>
-          <TouchableHighlight onPress={() => { navigation.navigate("Login") }} style={styles.singleItem}>
+          <TouchableHighlight onPress={() => { logout() }} style={styles.singleItem}>
             <View style={styles.profileItem}>
               <View style={{ flexDirection: "row", gap: spacing[1] }}>
                 <MaterialCommunityIcons
@@ -252,10 +254,6 @@ export default function Profile({ navigation }) {
           </TouchableHighlight>
         </View>
 
-        {/* <Button
-          title="Go to Details Profile"
-          onPress={() => navigation.navigate("HomeScreen")}
-        /> */}
       </ScrollView>
     </SafeAreaView>
   );

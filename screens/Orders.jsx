@@ -6,7 +6,6 @@ const Orders = ({ navigation }) => {
   return (
     <View>
       <Text>Orders</Text>
-
       <Button
         title="Go Back"
         customStyles={{ marginTop: spacing[2], alignSelf: "center" }}

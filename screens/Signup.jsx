@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import { View, Text, ActivityIndicator, TextInput, Button } from "react-native";
+import { View, Text, ActivityIndicator, TextInput, Button, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import { showMessage } from "react-native-flash-message";
 import RadioInput from "../components/radio-input";
 import Input from "../components/input";
+import { spacing } from "../theme/spacing";
+import { colors } from "../theme/colors";
 
 const OPTIONS = ["Male", "Female"];
 
-export default function Signup() {
+export default function Signup({ navigation }) {
   const [gender, setGender] = useState(null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -36,6 +38,13 @@ export default function Signup() {
 
   return (
     <SafeAreaView>
+      <View style={{
+        alignItems: "center",
+        marginTop: 30
+      }}>
+        <Text style={{ fontSize: 20 }}>Let,s Signup</Text>
+
+      </View>
       <View style={{ margin: 25 }}>
         <Input
           placeholder="Email"
@@ -75,6 +84,18 @@ export default function Signup() {
           />
         )}
       </View>
+
+      <TouchableOpacity onPress={() => navigation.navigate("Login")} style={{ marginTop: spacing[2] }}>
+        <Text style={{ textAlign: "center" }}>
+          Don't have an account?{" "}
+          <Text
+            style={{ color: colors.Blue, fontWeight: "bold" }}
+            onPress={() => navigation.navigate("Login")}
+          >
+            Login
+          </Text>
+        </Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }

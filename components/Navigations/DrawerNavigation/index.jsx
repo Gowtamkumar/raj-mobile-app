@@ -4,25 +4,32 @@ import Login from "../../../screens/login";
 import TabNavigation from "../TabNavigation";
 import Contact from "../../../screens/Contact";
 import Orders from "../../../screens/Orders";
-import { Ionicons } from "@expo/vector-icons";
+import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import Profile from "../../../screens/Profile";
-import { View } from "react-native";
+import { Image, TouchableOpacity, View } from "react-native";
 import DashBoard from "../../../screens/Dashboard";
-const Signup = lazy(() => import('../../../screens/Signup'));
+import { DrawerActions, useNavigation } from "@react-navigation/native";
+import HomeScreen from "../../../screens/HomeScreen";
+import ProductDetail from "../../../screens/ProductDetail";
+import About from "../../../screens/About";
+import MyWallet from "../../../screens/MyWallet";
+import PrivatePolicy from "../../../screens/PrivatePolicy";
+import TermAndCondition from "../../../screens/TermAndCondition";
+import ItemDetail from "../../../screens/ItemDetail";
+import Transaction from "../../../screens/Transaction";
+import CustomDrawer from "../CustomDrower";
+import Text from "../../text/text";
+const Signup = lazy(() => import("../../../screens/Signup"));
 
-export default function DrawerNavigation({ navigation }) {
-  const [auth, setAuth] = useState(true)
-  useEffect(() => {
-    console.log(auth);
-  }, [])
+export default function DrawerNavigation() {
+  const navigation = useNavigation();
 
   const Drawer = createDrawerNavigator();
   return (
-
     <Drawer.Navigator
-
+      drawerContent={props => <CustomDrawer {...props} />}
       screenOptions={({ route }) => ({
-        headerShown: true,
+        // headerShown: true,
         drawerIcon: ({ focused, color, size }) => {
           let iconName;
 
@@ -36,34 +43,69 @@ export default function DrawerNavigation({ navigation }) {
             iconName = focused ? "cart" : "cart";
           } else if (route.name === "Orders") {
             iconName = focused ? "cart" : "cart";
-          }
-          else if (route.name === "Profile") {
+          } else if (route.name === "Profile") {
             iconName = focused ? "cart" : "cart";
-          }else if (route.name === "DashBoard") {
-            iconName = focused ? "DashBoard" : "DashBoard";
+          } else if (route.name === "DashBoard") {
+            iconName = focused
+              ? "desktop-mac-dashboard"
+              : "desktop-mac-dashboard";
           }
 
           // You can return any component that you like here!
-          return <Ionicons name={iconName} size={size} color={color} />;
+          return (
+            <MaterialCommunityIcons name={iconName} size={size} color={color} />
+          );
         },
+        // custom Header
+        headerLeft: false,
+        headerRight: () => (
+          <TouchableOpacity onPress={() => navigation.dispatch(DrawerActions.openDrawer())}>
+            <Image
+              source={require('../../../assets/user-profile.jpg')}
+              style={{ height: 40, width: 40, borderRadius: 40 }}
+            />
+          </TouchableOpacity>
+        ),
+        //end custom header
         // drawerContentStyle: ,
         // tabBarActiveTintColor: "tomato",
         tabBarInactiveTintColor: "gray",
-        headerTitleAlign: "center",
-
+        // headerTitleAlign: "center",
       })}
     >
-      <Drawer.Screen name="HomeTab" component={TabNavigation} />
-      <Drawer.Screen name="Login" component={Login} />
-      <Drawer.Screen name="Signup" component={Signup} />
-      <Drawer.Screen name="Contact" component={Contact} />
-      <Drawer.Screen name="Orders" component={Orders} />
-      {
-        auth &&
-        <Drawer.Screen name="DashBoard" component={DashBoard} />
-      }
-
+      <Drawer.Screen
+        name="HomeTab"
+        component={TabNavigation}
+        options={{ title: "Welcome" }}
+      />
+      <Drawer.Screen name="Contact" component={Contact} options={{
+        drawerItemStyle: { height: 0 }
+      }} />
+      <Drawer.Screen name="Orders" component={Orders} options={{
+        drawerItemStyle: { height: 0 }
+      }} />
+      <Drawer.Screen name="DashBoard" component={DashBoard} />
+      <Drawer.Screen name="ProductDetail" component={ProductDetail} options={{
+        drawerItemStyle: { height: 0 }
+      }} />
+      <Drawer.Screen name="About" component={About} options={{
+        drawerItemStyle: { height: 0 }
+      }} />
+      <Drawer.Screen name="MyWallet" component={MyWallet} options={{
+        drawerItemStyle: { height: 0 }
+      }} />
+      <Drawer.Screen name="PrivatePolicy" component={PrivatePolicy} options={{
+        drawerItemStyle: { height: 0 }
+      }} />
+      <Drawer.Screen name="TermAndCondition" component={TermAndCondition} options={{
+        drawerItemStyle: { height: 0 }
+      }} />
+      <Drawer.Screen name="ItemDetail" component={ItemDetail} options={{
+        drawerItemStyle: { height: 0 }
+      }} />
+      <Drawer.Screen name="Transaction" component={Transaction} options={{
+        drawerItemStyle: { height: 0 }
+      }} />
     </Drawer.Navigator>
-
   );
 }

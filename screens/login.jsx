@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   View,
   Text,
@@ -20,17 +20,21 @@ import {
 } from "@expo/vector-icons";
 import { colors } from "../theme/colors";
 import { spacing } from "../theme/spacing";
+import { AuthContext } from "../context/AuthContext";
 
 export default function Login({ navigation }) {
   const [passwordVisibility, setPasswordVisibility] = useState(true);
-  const [loading, setLoading] = useState(false);
-  const [login, setlogin] = useState("");
+  const [formData, setFormData] = useState("");
   const [error, setError] = useState(null);
   const [rightIcon, setRightIcon] = useState("eye-off");
 
+  const { loading, login, logout, authToken } = useContext(AuthContext)
+
   const handleSubmit = () => {
-    console.log(login);
+    // console.log(login);
   };
+
+  console.log("login token", authToken);
 
   const handlePasswordVisibility = () => {
     if (rightIcon === "eye") {
@@ -63,7 +67,7 @@ export default function Login({ navigation }) {
           style={styles.input}
           placeholder="Email"
           autoCapitalize="none"
-          onChangeText={(e) => setlogin({ ...login, email: e })}
+          onChangeText={(e) => setFormData({ ...formData, email: e })}
         />
         <View style={styles.inputContainer}>
           <TextInput
@@ -75,7 +79,7 @@ export default function Login({ navigation }) {
             textContentType="newPassword"
             secureTextEntry={passwordVisibility}
             enablesReturnKeyAutomatically
-            onChangeText={(e) => setlogin({ ...login, password: e })}
+            onChangeText={(e) => setFormData({ ...formData, password: e })}
           />
           <Pressable onPress={handlePasswordVisibility}>
             <MaterialCommunityIcons
@@ -86,14 +90,51 @@ export default function Login({ navigation }) {
           </Pressable>
         </View>
         {error && <Text style={{ color: "red", marginTop: 10 }}>{error}</Text>}
-        {loading ? (
+        <>
+          <Button
+            title="Login"
+            customStyles={{ marginTop: spacing[2], alignSelf: "center" }}
+            onPress={() => login()}
+          />
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <View style={{ flex: 1, height: 1, backgroundColor: colors.Grey }} />
+            <View>
+              <Text style={{ width: 50, textAlign: 'center' }}>OR</Text>
+            </View>
+            <View style={{ flex: 1, height: 1, backgroundColor: colors.Grey }} />
+          </View>
+
+
+          <TouchableHighlight onPress={() => { }} style={{ backgroundColor: colors.Blue }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, padding: 7 }}>
+              <MaterialCommunityIcons
+                name={'google'}
+                size={20}
+                color="white"
+              />
+              <Text style={{ color: 'white' }} >Login With Google</Text>
+            </View>
+          </TouchableHighlight>
+          <TouchableHighlight onPress={() => { }} style={{ backgroundColor: colors.Blue, marginTop: spacing[2] }}>
+            <View style={{ flexDirection: 'row', justifyContent: 'center', gap: 10, padding: 7 }}>
+              <MaterialCommunityIcons
+                name={'facebook'}
+                size={20}
+                color="white"
+              />
+              <Text style={{ color: 'white' }} >Login With Facebook</Text>
+            </View>
+          </TouchableHighlight>
+
+        </>
+        {/* {loading ? (
           <ActivityIndicator />
         ) : (
           <>
             <Button
               title="Login"
               customStyles={{ marginTop: spacing[2], alignSelf: "center" }}
-              onPress={handleSubmit}
+              onPress={() => login()}
             />
             <View style={{ flexDirection: 'row', alignItems: 'center' }}>
               <View style={{ flex: 1, height: 1, backgroundColor: colors.Grey }} />
@@ -126,7 +167,7 @@ export default function Login({ navigation }) {
             </TouchableHighlight>
 
           </>
-        )}
+        )} */}
       </View>
 
       <TouchableOpacity onPress={navigateToSignUp} style={{ marginTop: spacing[2] }}>
